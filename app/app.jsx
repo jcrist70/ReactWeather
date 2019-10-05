@@ -13,7 +13,10 @@
 // git remote add origin https://github.com/jcrist70/ReactWeather.git
 // git branch
 // git remote -v
+// git commit -a -m 'Adding modified files to the Init Commit'  // have to use 'git add .' if it is a new file!
 // git push -u origin master
+// OR
+// git push
 
 // webpack -w
 // node server.js

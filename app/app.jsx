@@ -5,6 +5,15 @@
 // git --version
 // git init
 // git status
+// git add .gitignore
+// git add .
+// git commit -m 'Init Commit'
+// git commit -a -m 'Adding modified files to the Init Commit'  // have to use 'git add .' if it is a new file!
+// ls -al ~/.ssh
+// git remote add origin https://github.com/jcrist70/ReactWeather.git
+// git branch
+// git remote -v
+// git push -u origin master
 
 // webpack -w
 // node server.js

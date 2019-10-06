@@ -1,6 +1,7 @@
 // npm install babel-preset-stage-0
 // npm install react-router@2.0.0 --save
 // npm install axios --save
+// npm install css-loader@0.23.1 script-loader@0.6.1 style-loader@0.13.0 jquery@2.2.1 foundation-sites@6.2.0 --save-exact --save-dev
 
 // git --version
 // git init
@@ -22,6 +23,7 @@
 // heroku auth:whoami
 // heroku create
 // git push heroku master
+// heroku open
 
 // webpack -w
 // node server.js
@@ -34,6 +36,10 @@ const Main = require('./components/main.component');
 const Weather = require('./components/weather.component');
 const About = require('./components/about.component');
 const Examples = require('./components/examples.component');
+
+// Load foundation
+require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
 
 ReactDOM.render(
   // the history term forces the usee of /url/#/... 

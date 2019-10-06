@@ -4,6 +4,8 @@ var express = require('express');
 var app = express();
 const PORT = process.env.PORT || 3001;
 
+// have to comment out for localhost, the fix does not work..
+// now it seems to be workig on Heroku and k=local with uncommented?!?
 app.use(function (req,res,next) {
   if (req.headers['x-forwarded-proto'] === 'https') {
       res.redirect('http://' + req.hostname + req.url);  

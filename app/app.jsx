@@ -18,6 +18,11 @@
 // OR
 // git push
 
+// heroku login
+// heroku auth:whoami
+// heroku create
+// git push heroku master
+
 // webpack -w
 // node server.js
 // early dev: to get to about page --> http://127.0.0.1:3001/#/about

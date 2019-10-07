@@ -2,6 +2,7 @@
 // npm install react-router@2.0.0 --save
 // npm install axios --save
 // npm install css-loader@0.23.1 script-loader@0.6.1 style-loader@0.13.0 jquery@2.2.1 foundation-sites@6.2.0 --save-exact --save-dev
+// npm install sass-loader@3.2.1 node-sass@3.4.2 --save-dev
 
 // git --version
 // git init
@@ -41,7 +42,7 @@ const Examples = require('./components/examples.component');
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 // app.styles.css
-require('style!css!applicationStyles');
+require('style!css!sass!applicationStyles');
 //require('./app/styles/app.styles.css');
 
 ReactDOM.render(

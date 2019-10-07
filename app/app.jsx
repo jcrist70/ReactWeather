@@ -40,6 +40,9 @@ const Examples = require('./components/examples.component');
 // Load foundation
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
+// app.styles.css
+require('style!css!applicationStyles');
+//require('./app/styles/app.styles.css');
 
 ReactDOM.render(
   // the history term forces the usee of /url/#/... 

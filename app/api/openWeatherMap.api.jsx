@@ -21,13 +21,15 @@ module.exports = {
       var zipCode = axios.get(zipRequestURL, {
         }).then(function (res) {
         if (res.data.cod && res.data.message) {
-            throw new Error(res.data.message);
+            //throw new Error(res.data.message);
+            throw new Error('Unable to fetch weather for that location.');
         } else {
             console.log('getTemp res.data.zip_codes: ', res.data.zip_codes);
             return res.data.zip_codes[0];
         }
-        }, function (res) {
-        throw new Error(res.error_msg);
+        }, function (err) {
+          //throw new Error(err.response.data.message);
+          throw new Error('Unable to fetch weather for that location.');
         });
     
       var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedCity}`;

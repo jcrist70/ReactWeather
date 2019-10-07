@@ -2,11 +2,12 @@ const React = require('react');
 const WeatherForm = require('./weather-form.component');
 const WeatherMessage = require('./weather-message.component');
 const openWeatherMap = require('../api/openWeatherMap.api');
+const ErrorModal = require('./error-modal.component');
 
 const Weather = React.createClass({
     getDefaultProps: function () {
         return {
-            isLoading: false
+            isLoading: false,
         };
       },
       getInitialState: function () {
@@ -19,8 +20,9 @@ const Weather = React.createClass({
       },
       handleNewData: function (updates) {
         this.setState({
-            isLoading: true
-        })
+            isLoading: true,
+            errorMessage: undefined
+        });
 
         console.log('From handleNewData: ', updates.cityName, '   ', updates.stateName);
         openWeatherMap.getTemp(updates.cityName, updates.stateName).then(temp => {
@@ -29,8 +31,12 @@ const Weather = React.createClass({
                 stateName: updates.stateName,
                 temp: temp
             });
-        }, function (error) {
-            alert(error);
+        }, (e) => {
+            //alert(e);
+            this.setState({
+                //errorMessage: e.message
+                errorMessage: 'Unable to fetch weather for that location.'
+            })
         });
         this.setState({
             isLoading: false
@@ -40,7 +46,7 @@ const Weather = React.createClass({
       },
       
     render: function () {
-        var { isLoading, cityName, stateName, temp } = this.state;
+        var { isLoading, cityName, stateName, temp, errorMessage } = this.state;
 
         function renderMessage () {
             if (isLoading) {
@@ -50,11 +56,20 @@ const Weather = React.createClass({
             }
         }
 
+        function renderError () {
+            if (typeof errorMessage === 'string') {
+                return (
+                    <ErrorModal message={errorMessage} title=""/>
+                )
+            }
+        }
+
         return (
             <div>
                 <h1 className="text-center">Weather Component</h1>
                 <WeatherForm onNewData={this.handleNewData}/>
                 { renderMessage() }
+                { renderError() }
             </div>
         );
     }

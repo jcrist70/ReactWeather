@@ -41,7 +41,11 @@ module.exports = {
         console.log('encodedZip', encodedZip);
         requestUrlZipcode = `${OPEN_WEATHER_BYZIP_URL}&zip=${encodedZip}`;
         console.log('requestUrlZipcode: ', requestUrlZipcode);
-        return axios.get(requestUrlZipcode, {
+        if(data === undefined) {
+          console.log('Could not find zipcode.');
+          return ' (Could not find zipcode.) '
+        } else {
+          return axios.get(requestUrlZipcode, {
             }).then(function (res) {
             if (res.data.cod && res.data.message) {
                 throw new Error(res.data.message);
@@ -52,6 +56,7 @@ module.exports = {
             }, function (res) {
             throw new Error(res.data.message);
             });
+        }
       });    
     }
   }

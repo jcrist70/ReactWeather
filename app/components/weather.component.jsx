@@ -39,12 +39,51 @@ const Weather = React.createClass({
             })
         });
         this.setState({
-            isLoading: false
+            isLoading: false,
+            cityName: undefined, 
+            stateName: undefined, 
+            temp: undefined, 
+            errorMessage: undefined
         })
         //this.setState(updates);
         //alert(updates.cityName);
       },
-      
+      componentDidMount: function () {
+        var updates = {};
+        var city = this.props.location.query.location;
+        var state = this.props.location.query.state;
+        updates = {
+            cityName: city,
+            stateName: state
+        };
+        console.log('componentDidMount, cityName: ',updates.cityName, '  stateName: ', updates.stateName);
+        if (city && city.length > 0) {
+            if (state && state.length > 0) {
+                this.handleNewData(updates);
+                window.location.hash = '#/';
+            } else {
+                alert('Something went wrong, update your values and try again.')
+            }   
+        }
+      },
+      componentWillReceiveProps: function (newProps) {
+        var updates = {};
+        var city = newProps.location.query.location;
+        var state = newProps.location.query.state;
+        updates = {
+            cityName: city,
+            stateName: state
+        };
+        console.log('componentDidMount, cityName: ',updates.cityName, '  stateName: ', updates.stateName);
+        if (city && city.length > 0) {
+            if (state && state.length > 0) {
+                this.handleNewData(updates);
+                window.location.hash = '#/';
+            } else {
+                alert('Something went wrong, update your values and try again.')
+            }   
+        }
+      },
     render: function () {
         var { isLoading, cityName, stateName, temp, errorMessage } = this.state;
 
